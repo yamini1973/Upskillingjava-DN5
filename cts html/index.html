@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Community Event Portal</title>
+
+    <style>
+        #welcomeBanner{
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        .highlight{
+            background-color: yellow;
+        }
+
+        .event-img{
+            border: 2px solid black;
+        }
+
+        form{
+            border: 1px solid black;
+            padding: 10px;
+            width: 400px;
+        }
+    </style>
+
+    <script>
+        function validatePhone() {
+            let phone = document.getElementById("phone").value;
+
+            if (phone.length != 10) {
+                alert("Phone number must contain 10 digits");
+            }
+        }
+
+        function showFee() {
+            let event = document.getElementById("eventType").value;
+            let fee = "";
+
+            if (event == "Music") fee = "Fee: Rs.100";
+            else if (event == "Sports") fee = "Fee: Rs.200";
+            else if (event == "Workshop") fee = "Fee: Rs.300";
+
+            document.getElementById("fee").innerHTML = fee;
+
+            localStorage.setItem("preferredEvent", event);
+        }
+
+        function submitForm() {
+            document.getElementById("result").value =
+                "Registration Submitted Successfully!";
+        }
+
+        function enlargeImage(img) {
+            img.style.width = "300px";
+            img.style.height = "200px";
+        }
+
+        function countChars() {
+            let text = document.getElementById("feedback").value;
+            document.getElementById("count").innerHTML =
+                "Characters: " + text.length;
+        }
+
+        function videoReady() {
+            document.getElementById("videoMsg").innerHTML =
+                "Video ready to play";
+        }
+
+        window.onload = function () {
+            let saved = localStorage.getItem("preferredEvent");
+
+            if (saved) {
+                document.getElementById("eventType").value = saved;
+                showFee();
+            }
+        };
+
+        function clearPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+            alert("Preferences Cleared");
+        }
+
+        function findLocation() {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    document.getElementById("location").innerHTML =
+                        "Latitude: " + position.coords.latitude +
+                        "<br>Longitude: " + position.coords.longitude;
+                },
+                function(error) {
+                    alert("Location access denied or unavailable");
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000
+                }
+            );
+        }
+
+        window.onbeforeunload = function () {
+            return "Are you sure you want to leave?";
+        };
+    </script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a> |
+        <a href="#events">Events</a> |
+        <a href="#contact">Contact</a> |
+        <a href="help.html" target="_blank">Help</a>
+    </nav>
+
+    <hr>
+
+    <!-- Main -->
+
+    <div id="welcomeBanner">
+        <h2>Welcome to Community Event Portal</h2>
+
+        <p class="highlight">
+            Register for local events today!
+        </p>
+
+        <p>
+            <span style="color:red; font-weight:bold;">
+                Special Offer: Free Entry for First 50 Registrations
+            </span>
+        </p>
+    </div>
+
+    <section id="home">
+        <h2>Home</h2>
+        <p>Community activities and services.</p>
+    </section>
+
+    <section id="events">
+        <h2>Events Gallery</h2>
+
+        <table border="1">
+            <tr>
+                <td>
+                    <img src="musicevent.webp"
+     alt="Event1"
+     title="Music Event"
+     class="event-img"
+     width="271"
+     height="186"
+     ondblclick="enlargeImage(this)">
+                    <p>Music Event</p>
+                </td>
+
+                <td>
+                    <img src="C:\Users\miniv\OneDrive\Desktop\cts html\sports.jpg"
+                         alt="Event2"
+                         title="Sports Event"
+                         class="event-img">
+                    <p>Sports Event</p>
+                </td>
+
+                <td>
+                    <img src="C:\Users\miniv\OneDrive\Desktop\cts html\workshop.jpg"
+                         alt="Event3"
+                         title="Workshop"
+                         class="event-img">
+                    <p>Workshop</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img src="C:\Users\miniv\OneDrive\Desktop\cts html\festivals.jpg"
+                         alt="Event4"
+                         title="Festival"
+                         class="event-img">
+                    <p>Festival</p>
+                </td>
+
+                <td>
+                    <img src="C:\Users\miniv\OneDrive\Desktop\cts html\meeting.jpg"
+                         alt="Event5"
+                         title="Meeting"
+                         class="event-img">
+                    <p>Meeting</p>
+                </td>
+
+                <td>
+                    <img src="C:\Users\miniv\OneDrive\Desktop\cts html\Awareness Program Photo.jpg"
+                         alt="Event6"
+                         title="Awareness Program"
+                         class="event-img">
+                    <p>Awareness Program</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Event Registration Form</h2>
+
+        <form>
+
+            <label>Name:</label><br>
+            <input type="text"
+                   placeholder="Enter Name"
+                   required
+                   autofocus><br><br>
+
+            <label>Email:</label><br>
+            <input type="email"
+                   placeholder="Enter Email"
+                   required><br><br>
+
+            <label>Phone:</label><br>
+            <input type="text"
+                   id="phone"
+                   onblur="validatePhone()"><br><br>
+
+            <label>Date:</label><br>
+            <input type="date" required><br><br>
+
+            <label>Event Type:</label><br>
+            <select id="eventType" onchange="showFee()">
+                <option>Music</option>
+                <option>Sports</option>
+                <option>Workshop</option>
+            </select>
+
+            <p id="fee"></p>
+
+            <label>Message:</label><br>
+            <textarea rows="4" cols="30"></textarea><br><br>
+
+            <button type="button" onclick="submitForm()">
+                Submit
+            </button>
+
+            <br><br>
+
+            <output id="result"></output>
+
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Feedback</h2>
+
+        <textarea id="feedback"
+                  onkeyup="countChars()"
+                  rows="5"
+                  cols="40"></textarea>
+
+        <p id="count">Characters: 0</p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Promo Video</h2>
+
+        <video width="320" controls oncanplay="videoReady()">
+            <source src="sample.mp4" type="video/mp4">
+        </video>
+
+        <p id="videoMsg"></p>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Geolocation</h2>
+
+        <button onclick="findLocation()">
+            Find Nearby Events
+        </button>
+
+        <p id="location"></p>
+    </section>
+
+    <hr>
+
+    <section>
+        <button onclick="clearPreferences()">
+            Clear Preferences
+        </button>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: community@events.com</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <hr>
+        <p>Local Community Event Portal</p>
+    </footer>
+
+</body>
+</html>
