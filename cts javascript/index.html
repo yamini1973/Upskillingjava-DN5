@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lavender Bloom Community Hub</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<header id="mainHeader">
+
+<h1> Lavender Bloom Community Hub</h1>
+
+<p>
+A pastel-themed community portal for events,
+workshops, art exhibitions and music programs.
+</p>
+
+</header>
+
+<nav class="navbar">
+
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#">Events</a></li>
+
+<li><a href="#">Workshops</a></li>
+
+<li><a href="#">Gallery</a></li>
+
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h2>Welcome To The Festival Season</h2>
+
+<p class="description">
+
+Discover music nights, art walks,
+baking workshops and more community experiences.
+
+</p>
+
+</section>
+
+<section class="control-panel">
+
+<h2>Explore Events</h2>
+
+<div class="filters">
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search event..."
+>
+
+<select id="categoryFilter">
+
+<option value="All">
+All Categories
+</option>
+
+<option value="Music">
+Music
+</option>
+
+<option value="Workshop">
+Workshop
+</option>
+
+<option value="Art">
+Art
+</option>
+
+</select>
+
+<button id="registerBtn">
+Show / Hide Events
+</button>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Upcoming Events</h2>
+
+<div id="loading">
+Loading events...
+</div>
+
+<div id="eventsContainer">
+
+</div>
+
+</section>
+
+<section class="bulletin">
+
+<h2>Community Bulletin</h2>
+
+<div class="news-column">
+
+The Lavender Bloom Festival celebrates
+local creativity through music,
+art and educational workshops.
+
+Visitors can attend live concerts,
+participate in baking sessions,
+join painting exhibitions and support
+local businesses throughout the season.
+
+Families can enjoy outdoor activities,
+interactive games and cultural programs
+organized by community volunteers.
+
+The event portal demonstrates JavaScript,
+DOM manipulation, forms,
+filtering, asynchronous programming,
+event handling and modern ES6 concepts.
+
+</div>
+
+</section>
+
+<section class="form-section">
+
+<h2>Register For An Event</h2>
+
+<form id="regForm">
+
+<label>Name</label>
+
+<input
+type="text"
+name="name"
+placeholder="Enter your name"
+>
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+placeholder="Enter your email"
+>
+
+<label>Select Event</label>
+
+<select name="event">
+
+<option>
+Music Night
+</option>
+
+<option>
+Baking Workshop
+</option>
+
+<option>
+Art Walk
+</option>
+
+</select>
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+<div id="formMessage">
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Event Schedule</h2>
+
+<table>
+
+<tr>
+<th>Event</th>
+<th>Date</th>
+<th>Category</th>
+</tr>
+
+<tr>
+<td>Music Night</td>
+<td>June 15</td>
+<td>Music</td>
+</tr>
+
+<tr>
+<td>Baking Workshop</td>
+<td>June 18</td>
+<td>Workshop</td>
+</tr>
+
+<tr>
+<td>Art Walk</td>
+<td>June 20</td>
+<td>Art</td>
+</tr>
+
+<tr>
+<td>Choir Evening</td>
+<td>June 25</td>
+<td>Music</td>
+</tr>
+
+</table>
+
+</section>
+
+<section>
+
+<h2>Visibility Demo</h2>
+
+<div class="hidden-box">
+visibility:hidden example
+</div>
+
+<div class="none-box">
+display:none example
+</div>
+
+<p>
+The first box keeps its space.
+The second box disappears completely.
+</p>
+
+</section>
+
+<footer>
+
+<h2>Stay Connected</h2>
+
+<div class="socials">
+
+<a href="#">Instagram</a>
+<a href="#">Facebook</a>
+<a href="#">Newsletter</a>
+
+</div>
+
+<p>
+Built using HTML, CSS and JavaScript.
+</p>
+
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>
